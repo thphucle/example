@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  upload:
+    restart: always
+    image: upload:local
+    volumes:
+      - ./public/upload:/upload
+    environment:
+      - BASE_URL=http://localhost:8080
+      - SIZES=large:1024,medium:680,small:460,thumbnail:240
+      - KEEP_ORIGIN=0
+    expose:
+      - 80
+    ports:
+      - 80:80

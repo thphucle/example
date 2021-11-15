@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  clickhouse:
+    image: yandex/clickhouse-server
+    ports:
+      - "8123:8123" # For clickhouse db
+      - "9000:9000" # For native client
+    volumes:
+      - ./data-db:/var/lib/clickhouse
+      - ./users.xml:/etc/clickhouse-server/users.xml
+
+  app:
+    restart: always
+    image: node:12.18.4-alpine
+    command: "npm run start"
+    environment: 
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    depends_on:
+      - clickhouse
+    expose:
+      - 6514
+    ports:
+      - 6514:6514/udp

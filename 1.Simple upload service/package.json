@@ -1,0 +1,21 @@
+{
+  "name": "upload-service",
+  "description": "upload service",
+  "version": "1.0.14",
+  "main": "index.js",
+  "author": {
+    "name": "pgyc"
+  },
+  "dependencies": {
+    "fastify": "^3.9.1",
+    "fastify-multer": "^2.0.2",
+    "fastify-static": "^3.3.0",
+    "sharp": "^0.26.3",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "private": true,
+  "license": "MIT"
+}
